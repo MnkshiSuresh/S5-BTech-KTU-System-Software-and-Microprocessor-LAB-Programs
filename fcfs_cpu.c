@@ -10,7 +10,7 @@ struct fcfs{
 }p[10],temp;
 void main(){
     int n;
-    float atat,awt,tat,wt;
+    float tat=0,wt=0;
     printf("---------FCFS------");
     printf("Enter the number of process");
     scanf("%d",&n);
