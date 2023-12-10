@@ -13,3 +13,7 @@
 0419: LOOPNZ 0419 ;looping here when zero flag not set
 041B: POP CX      ;retrieve CX
 041C: RET         ;return
+
+
+->0500:0A  0501:06  0502:05  0503:09
+->0500:09  0501:05  0502:06  0503:0A (to Reverse the direction)
