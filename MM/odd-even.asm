@@ -1,37 +1,45 @@
 DATA SEGMENT
     RESULT DW ?
-    MSG 10,13,"ENTER THE NUMBER :$"
-    MSG2 10,13,"IS EVEN$" 
-    MSG3 10,13,"IS ODD$"
+    MSG DB 10,13,"ENTER THE NUMBER :$"
+    MSG2 DB 10,13,"IS EVEN$"
+    MSG3 DB 10,13,"IS ODD$"
 
 DATA ENDS
-
 
 CODE SEGMENT
     ASSUME CS:CODE,DS:DATA
     START:
     MOV AX,DATA
     MOV DS,AX
+
     LEA DX,MSG
     MOV AH,09H
     INT 21H
+
     MOV AH,01H
     INT 21H
-    MOV AX,AL
-    MOV BX,0002H
-    DIV AX,BX
-    MOV RESULT,AX
-    JNZ ODD
-    LEA DX,MSG2
+
+    MOV BL,AL     
+    MOV AX,BX
+    MOV CX,0002H
+    DIV CX
+    MOV RESULT,DL  
+    CMP DL, 0     
+    JZ EVEN       
+
+    LEA DX,MSG3   
     MOV AH,09H
     INT 21H
-    ODD:
-    LEA DX,MSG2
+    JMP EXIT      
+
+    EVEN:
+    LEA DX,MSG2    
     MOV AH,09H
     INT 21H
-    
-    MOV AH,4CH
+
+    EXIT:
+    MOV AH,4CH      
     INT 21H
-    
+
 CODE ENDS
 END START
