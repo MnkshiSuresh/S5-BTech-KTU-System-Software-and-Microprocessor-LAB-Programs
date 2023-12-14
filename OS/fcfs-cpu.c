@@ -11,13 +11,13 @@ struct fcfs{
 void main(){
     int n;
     float tat=0,wt=0;
-    printf("---------FCFS------");
-    printf("Enter the number of process");
+    printf("---------FCFS------\n");
+    printf("Enter the number of process: ");
     scanf("%d",&n);
     for(int i=1;i<=n;i++){
-        printf("Enter the arrival time");
+        printf("Enter the arrival time: ");
         scanf("%d",&p[i].atime);
-        printf("Enter the burst time");
+        printf("Enter the burst time: ");
         scanf("%d",&p[i].btime);
         p[i].pid=i;
     }p[0].wtime=0;
@@ -38,10 +38,11 @@ void main(){
         tat=tat+p[i].ttime;
         wt=wt+p[i].wtime;
     }
+    printf("\nPROCESS ARRIVALTIME BURSTTIME COMPLETIONTIME TAT WT\n" );
     for(int i=1;i<=n;i++){
-    printf("\n  %d \t %d \t %d \t %d \t %d \t %d \t  \n ",p[i].pid,p[i].atime,p[i].btime,p[i].ctime,p[i].ttime,p[i].wtime);
+    printf("P%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n",p[i].pid,p[i].atime,p[i].btime,p[i].ctime,p[i].ttime,p[i].wtime);
   } 
     printf("\n  TurnAroundTime %f \n  Waiting Time %f\n",tat,wt);
     printf("\n Average TurnAroundTime %f \n Average Waiting Time %f\n",tat/n,wt/n);
 
-}   
+} 
